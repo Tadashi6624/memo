@@ -33,7 +33,12 @@ elsif  memo_type == 2
             edit_type = gets.to_i
             if edit_type == 1
                 puts "追記したい内容を記入してください\nCtrl + Dで終了してください"
-                memo_contents = readlines(chomp: true)
+                puts "メモしたい内容を記入してください\nCtrl + Dで終了してください"
+                  memo_contents = []
+                while (line = gets)
+                  memo_contents << line.chomp
+                end
+
                 CSV.open(memo_name + ".csv", "a") do |csv|
                     csv.puts memo_contents
                 end
